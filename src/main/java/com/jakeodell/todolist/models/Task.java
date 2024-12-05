@@ -1,19 +1,25 @@
 package com.jakeodell.todolist.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.sql.Date;
 
 public class Task {
-    private int id;
+
+    @Id
+    private long id;
+
     private String title;
     private String description;
-    private boolean complete;
+    //TODO USE TINYINT FOR COMPLETE
+    //private boolean complete;
     private Date due_date;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -33,13 +39,13 @@ public class Task {
         this.description = description;
     }
 
-    public boolean isComplete() {
-        return complete;
-    }
-
-    public void setComplete(boolean complete) {
-        this.complete = complete;
-    }
+//    public boolean isComplete() {
+//        return complete;
+//    }
+//
+//    public void setComplete(boolean complete) {
+//        this.complete = complete;
+//    }
 
     public Date getDue_date() {
         return due_date;

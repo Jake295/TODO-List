@@ -1,28 +1,26 @@
 package com.jakeodell.todolist.controllers;
 
 import com.jakeodell.todolist.models.Task;
-import com.jakeodell.todolist.repositories.TaskRepository;
+import com.jakeodell.todolist.services.TaskServices;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/task")
+//@RequestMapping("/task")
 public class TaskController {
 
-    private final TaskRepository taskRepository;
+    private final TaskServices taskServices;
 
-    public TaskController(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public TaskController(TaskServices taskServices) {
+        this.taskServices = taskServices;
     }
 
-    @PostMapping
-    public void createTask(@RequestBody Task task) {
-        taskRepository.storeTask(task);
-    }
+//    @PostMapping
+//    public void createTask(@RequestBody Task task) {
+//        taskRepository.storeTask(task);
+//    }
 
     @GetMapping
-    public List<Task> findTasks() {
-        return taskRepository.findAllTasks();
+    public Iterable<Task> findTasks() {
+        return taskServices.findAll();
     }
 }

@@ -1,41 +1,16 @@
 package com.jakeodell.todolist.repositories;
 
 import com.jakeodell.todolist.models.Task;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jdbc.repository.query.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-@Repository
-public class TaskRepository {
+public interface TaskRepository extends CrudRepository<Task, Long> {
 
-    private final JdbcTemplate jdbc;
+    //TODO: Add createTask, atlerTask, deleteTask
 
-    public TaskRepository(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
-    }
+    @Query("SELECT * FROM tasks")
+    List<Task> findAllTasks();
 
-    //TODO: Create atlerTask, deleteTask
-
-    public void storeTask(Task task) {
-        String sql = "INSERT INTO tasks (title, description, complete, due_date) VALUES (?, ?, ?, ?)";
-        jdbc.update(sql, task.getTitle(), task.getDescription(), task.isComplete(), task.getDue_date());
-    }
-
-    public List<Task> findAllTasks() {
-        String sql = "SELECT * FROM tasks";
-
-        RowMapper<Task> taskRowMapper = (r, i) -> {
-            Task rowObject = new Task();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setTitle(r.getString("title"));
-            rowObject.setDescription(r.getString("description"));
-            rowObject.setComplete(r.getBoolean("complete"));
-            rowObject.setDue_date(r.getDate("date"));
-            return rowObject;
-        };
-
-        return jdbc.query(sql, taskRowMapper);
-    }
 }
