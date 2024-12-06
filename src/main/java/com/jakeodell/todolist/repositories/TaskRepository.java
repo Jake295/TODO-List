@@ -10,7 +10,7 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 
     //TODO: Add createTask, atlerTask, deleteTask
 
-    @Query("SELECT * FROM tasks")
+    @Query("SELECT * FROM task")
     List<Task> findAllTasks();
 
 }

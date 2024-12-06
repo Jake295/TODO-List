@@ -5,7 +5,6 @@ import com.jakeodell.todolist.services.TaskServices;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@RequestMapping("/task")
 public class TaskController {
 
     private final TaskServices taskServices;
@@ -14,13 +13,20 @@ public class TaskController {
         this.taskServices = taskServices;
     }
 
-//    @PostMapping
-//    public void createTask(@RequestBody Task task) {
-//        taskRepository.storeTask(task);
-//    }
 
     @GetMapping
-    public Iterable<Task> findTasks() {
-        return taskServices.findAll();
+    public Iterable<Task> findAllTasks() {
+        return taskServices.findAllTasks();
     }
+
+    @PostMapping("/new-task")
+    public void createTask(@RequestBody Task task) {
+        taskServices.saveTask(task);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        taskServices.deleteTaskById(id);
+    }
+
 }

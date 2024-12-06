@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS task (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
-    description VARCHAR(300),
---     complete TINYINT(1) NOT NULL DEFAULT 0,
+    note VARCHAR(300),
+    complete BOOLEAN NOT NULL DEFAULT FALSE,
     due_date DATE
     );

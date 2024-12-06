@@ -14,7 +14,16 @@ public class TaskServices {
     }
 
 
-    public Iterable<Task> findAll() {
+    public Iterable<Task> findAllTasks() {
         return taskRepository.findAll();
     }
+
+    public void saveTask(Task task) {
+        taskRepository.save(task);
+    }
+
+    public void deleteTaskById(Long id) {
+        taskRepository.deleteById(id);
+    }
+
 }

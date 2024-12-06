@@ -10,9 +10,8 @@ public class Task {
     private long id;
 
     private String title;
-    private String description;
-    //TODO USE TINYINT FOR COMPLETE
-    //private boolean complete;
+    private String note;
+    private boolean complete;
     private Date due_date;
 
     public long getId() {
@@ -31,21 +30,21 @@ public class Task {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getNote() {
+        return note;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-//    public boolean isComplete() {
-//        return complete;
-//    }
-//
-//    public void setComplete(boolean complete) {
-//        this.complete = complete;
-//    }
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
 
     public Date getDue_date() {
         return due_date;
