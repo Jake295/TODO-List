@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class TaskController {
 
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
@@ -18,7 +19,7 @@ public class TaskController {
     }
 
 
-    @GetMapping
+    @GetMapping("/tasks")
     public Iterable<Task> findAllTasks() {
         logger.info("Finding all tasks...");
         Iterable<Task> tasks = taskServices.findAllTasks();

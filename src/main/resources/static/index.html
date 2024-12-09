@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+</head>
+<body>
+<h1>Tasks</h1>
+<ul id="task-list"></ul>
+
+<form id="new-task-form">
+    <input type="text" id="task-title" placeholder="Task title" required>
+    <input type="text" id="task-note" placeholder="Task note">
+    <button type="submit">Add Task</button>
+</form>
+
+<script>
+    const taskList = document.getElementById('task-list');
+    const form = document.getElementById('new-task-form');
+    const titleInput = document.getElementById('task-title');
+    const noteInput = document.getElementById('task-note');
+
+    // Fetch existing tasks on page load
+    fetch('http://localhost:8080/api/tasks')
+        .then(response => response.json())
+        .then(tasks => {
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task.title + (task.note ? `: ${task.note}` : '');
+                taskList.appendChild(li);
+            });
+        });
+
+    // Add a new task
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const newTask = {
+            title: titleInput.value,
+            note: noteInput.value
+        };
+        fetch('http://localhost:8080/api/new-task', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newTask)
+        })
+            .then(() => {
+                // Optionally refetch tasks or append the new one directly
+                location.reload();
+            });
+    });
+</script>
+</body>
+</html>
