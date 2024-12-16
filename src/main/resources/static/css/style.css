@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: grid;
+    grid-template-columns: 30px 1fr 150px 100px;
+    align-items: center;
+    margin: 5px 0;
+    padding: 5px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    position: relative;
+}
+
+.task-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+    margin-right: 5px;
+}
+
+.task-note {
+    color: #555;
+    font-size: 0.95em;
+}
+
+.task-title-note {
+    padding: 0 10px;
+}
+
+.task-due-date {
+    text-align: right;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.task-actions {
+    text-align: right;
+}
+
+.task-actions button {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    margin: 0.15em;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+}
+
+.task-actions button.delete-button {
+    background: #dc3545; /* Red for delete */
+}
+
+.task-actions button:hover {
+    opacity: 1;
+}
+
+#new-task-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-title,
+.edit-note,
+.edit-due-date {
+    width: 95%;
+    box-sizing: border-box;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.edit-title,
+.edit-note {
+    grid-column: 2; /* Same column as the title/note display */
+}
+.edit-due-date {
+    grid-column: 3; /* Same column as the due date display */
+}
+
+#new-task-form input[type="text"],
+#new-task-form input[type="date"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+#new-task-form button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+#new-task-form button:hover {
+    background: #218838;
+}

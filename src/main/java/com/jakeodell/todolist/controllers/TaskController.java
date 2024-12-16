@@ -34,11 +34,28 @@ public class TaskController {
         logger.info("Task created successfully.");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/del/{id}")
     public void deleteTask(@PathVariable Long id) {
         logger.info("Deleting task with id: {}", id);
         taskServices.deleteTaskById(id);
         logger.info("Task deleted successfully.");
+    }
+
+    //UPDATE COMPLETE STATUS
+    @PutMapping("/tasks/{id}")
+    public void updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
+        logger.info("Updating task with id: {}", id);
+        Task existingTask = taskServices.findTaskById(id);
+        if (existingTask != null) {
+            if (updatedTask.getTitle() != null) existingTask.setTitle(updatedTask.getTitle());
+            if (updatedTask.getNote() != null) existingTask.setNote(updatedTask.getNote());
+            if (updatedTask.getDue_date() != null) existingTask.setDue_date(updatedTask.getDue_date());
+            if (updatedTask.isComplete() != existingTask.isComplete()) existingTask.setComplete(updatedTask.isComplete());
+            taskServices.saveTask(existingTask);
+            logger.info("Task updated successfully.");
+        } else {
+            logger.warn("Task not found to update - task id: {}", id);
+        }
     }
 
 }
