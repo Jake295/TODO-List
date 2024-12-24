@@ -3,6 +3,7 @@ FROM eclipse-temurin:17-jdk-alpine as builder
 WORKDIR /app
 COPY . .
 # If using Maven
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 # The above command creates a JAR in /app/target
 
