@@ -238,7 +238,7 @@
     }
 
     function deleteTask(id) {
-        fetch(`/api/tasks/${id}`, {
+        fetch(`/api/del/${id}`, {
             method: 'DELETE'
         })
             .then(() => {
