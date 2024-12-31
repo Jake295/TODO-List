@@ -1,38 +1,54 @@
+/* Global Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 20px;
-}
-
-h1 {
+    background-color: #f9f9f9;
     color: #333;
 }
 
+h1 {
+    color: #007bff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Task List Styling */
 #task-list {
     list-style: none;
     padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .task-item {
     display: grid;
-    grid-template-columns: 30px 1fr 150px 100px;
+    grid-template-columns: 30px 1fr 150px 120px;
     align-items: center;
-    margin: 5px 0;
-    padding: 5px;
-    background: #f1f1f1;
-    border-radius: 4px;
-    position: relative;
+    margin: 10px 0;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .task-title {
     font-weight: bold;
     color: #333;
-    font-size: 1.1em;
-    margin-right: 5px;
+    font-size: 1.2em;
+    margin-right: 10px;
 }
 
 .task-note {
-    color: #555;
-    font-size: 0.95em;
+    color: #666;
+    font-size: 1em;
 }
 
 .task-title-note {
@@ -41,7 +57,7 @@ h1 {
 
 .task-due-date {
     text-align: right;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #555;
 }
 
@@ -50,10 +66,10 @@ h1 {
 }
 
 .task-actions button {
-    opacity: 0.5;
-    transition: opacity 0.2s;
-    margin: 0.15em;
-    padding: 3px 8px;
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+    margin: 0 5px;
+    padding: 6px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -61,54 +77,56 @@ h1 {
     color: #fff;
 }
 
+.task-actions button:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .task-actions button.delete-button {
     background: #dc3545; /* Red for delete */
 }
 
-.task-actions button:hover {
-    opacity: 1;
+.task-actions button.save-button {
+    background: #28a745; /* Green for save */
 }
 
+.task-actions button.cancel-button {
+    background: #ffc107; /* Yellow for cancel */
+}
+
+/* Form Styling */
 #new-task-form {
-    margin-top: 20px;
+    margin: 20px auto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-}
-
-.edit-title,
-.edit-note,
-.edit-due-date {
-    width: 95%;
-    box-sizing: border-box;
-    padding: 3px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-.edit-title,
-.edit-note {
-    grid-column: 2; /* Same column as the title/note display */
-}
-.edit-due-date {
-    grid-column: 3; /* Same column as the due date display */
+    max-width: 600px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #new-task-form input[type="text"],
 #new-task-form input[type="date"] {
-    padding: 5px;
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    flex: 1;
+    font-size: 1em;
 }
 
 #new-task-form button {
-    padding: 5px 10px;
+    width: 100%;
+    padding: 10px 15px;
     cursor: pointer;
     background: #28a745;
     color: #fff;
     border: none;
     border-radius: 4px;
+    font-size: 1em;
+    transition: background 0.2s ease-in-out;
 }
 
 #new-task-form button:hover {
