@@ -21,10 +21,11 @@ h1 {
     margin: 0 auto;
 }
 
+/* Task List Styling */
 .task-item {
-    display: grid;
-    grid-template-columns: 30px 1fr 150px 120px;
-    align-items: center;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between content and buttons */
+    align-items: center; /* Align items vertically */
     margin: 10px 0;
     padding: 15px;
     background: #fff;
@@ -39,36 +40,27 @@ h1 {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.task-title {
-    font-weight: bold;
-    color: #333;
-    font-size: 1.2em;
-    margin-right: 10px;
-}
-
-.task-note {
-    color: #666;
-    font-size: 1em;
-}
-
+/* Content Section Styling */
 .task-title-note {
-    padding: 0 10px;
+    flex-grow: 1; /* Ensure the title and note take up remaining space */
+    margin-right: 15px; /* Add space between content and buttons */
 }
 
 .task-due-date {
-    text-align: right;
+    margin-right: 15px; /* Add space between due date and buttons */
     font-size: 0.95em;
     color: #555;
 }
 
+/* Actions Section Styling */
 .task-actions {
-    text-align: right;
+    display: flex; /* Use flexbox for buttons */
+    gap: 10px; /* Add spacing between buttons */
 }
 
 .task-actions button {
     opacity: 0.8;
     transition: opacity 0.2s, transform 0.2s;
-    margin: 0 5px;
     padding: 6px 12px;
     border: none;
     border-radius: 4px;
@@ -84,6 +76,10 @@ h1 {
 
 .task-actions button.delete-button {
     background: #dc3545; /* Red for delete */
+}
+
+.task-actions button.edit-button {
+    background: #007bff; /* Blue for edit */
 }
 
 .task-actions button.save-button {
